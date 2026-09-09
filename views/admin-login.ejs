@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Admin-Login – Moe's Kebap</title>
+<style>
+  body{font-family:sans-serif;background:#faf6ec;color:#1a1a16;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;}
+  form{background:#fff;padding:2rem;border-radius:6px;box-shadow:0 8px 24px rgba(0,0,0,.1);width:280px;}
+  h1{font-size:1.2rem;margin-bottom:1rem;}
+  input{width:100%;padding:0.6rem;margin-bottom:1rem;border:1px solid #ccc;border-radius:4px;box-sizing:border-box;}
+  button{width:100%;padding:0.7rem;background:#0f2e21;color:#fff;border:none;border-radius:4px;cursor:pointer;}
+  .error{color:#b33;font-size:0.85rem;margin-bottom:1rem;}
+</style>
+</head>
+<body>
+  <form method="POST" action="/admin/login">
+    <h1>Admin-Login</h1>
+    <% if (error) { %><p class="error"><%= error %></p><% } %>
+    <input type="password" name="password" placeholder="Passwort" autofocus required>
+    <button type="submit">Anmelden</button>
+  </form>
+</body>
+</html>

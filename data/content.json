@@ -1,0 +1,248 @@
+{
+  "hero": {
+    "slogan": "München riecht heute nach Moe's."
+  },
+  "menu": [
+    {
+      "id": "menu-drehspiess",
+      "name": "Drehspieß",
+      "image": "doener-thumb.jpg",
+      "items": [
+        {
+          "name": "Moe's Klassik",
+          "price": "7,50 €",
+          "desc": "Zartes Hähnchenfleisch vom Drehspieß im frischen Fladenbrot mit Salat, Zwiebeln, Tomaten und unserer hausgemachten Sauce."
+        },
+        {
+          "name": "Moe's Dürüm",
+          "price": "8,00 €",
+          "desc": "Zartes Hähnchenfleisch vom Drehspieß im frischen Dürüm mit Salat, Zwiebeln, Tomaten und unserer hausgemachten Sauce."
+        },
+        {
+          "name": "Moe's Box",
+          "price": "7,50 €",
+          "desc": "Zartes Hähnchenfleisch vom Drehspieß mit Pommes, Salat und unserer hausgemachten Sauce."
+        },
+        {
+          "name": "Moe's Teller",
+          "price": "13,00 €",
+          "desc": "Zartes Hähnchenfleisch vom Drehspieß mit Pommes oder Reis, Salat und unserer hausgemachten Sauce."
+        }
+      ]
+    },
+    {
+      "id": "menu-koefte",
+      "name": "Köfte",
+      "image": null,
+      "items": [
+        {
+          "name": "Köfte im Brot",
+          "price": "7,50 €",
+          "desc": null
+        },
+        {
+          "name": "Köfte Teller",
+          "price": "13,00 €",
+          "desc": null
+        }
+      ]
+    },
+    {
+      "id": "menu-vegetarisch",
+      "name": "Vegetarisch",
+      "image": "falafel-thumb.jpg",
+      "items": [
+        {
+          "name": "Falafel Sandwich",
+          "price": "6,00 €",
+          "desc": null
+        },
+        {
+          "name": "Falafel Dürüm",
+          "price": "7,00 €",
+          "desc": null
+        },
+        {
+          "name": "Falafel Box",
+          "price": "6,00 €",
+          "desc": null
+        },
+        {
+          "name": "Falafel Teller",
+          "price": "10,00 €",
+          "desc": null
+        }
+      ]
+    },
+    {
+      "id": "menu-iskender",
+      "name": "İskender",
+      "image": "iskender-thumb.jpg",
+      "items": [
+        {
+          "name": "İskender",
+          "price": "14,00 €",
+          "desc": "İskender mit Hähnchenfleisch, Tomatensauce, Joghurt und Brot."
+        }
+      ]
+    },
+    {
+      "id": "menu-currywurst",
+      "name": "Currywurst",
+      "image": "currywurst-thumb.jpg",
+      "items": [
+        {
+          "name": "Currywurst im Brot",
+          "price": "5,00 €",
+          "desc": null
+        },
+        {
+          "name": "Currywurst mit Pommes",
+          "price": "7,00 €",
+          "desc": null
+        }
+      ]
+    },
+    {
+      "id": "menu-toast",
+      "name": "Toast",
+      "image": "sucuk-toast-thumb.jpg",
+      "items": [
+        {
+          "name": "Toast mit Sucuk & Kashkaval",
+          "price": "5,00 €",
+          "desc": null
+        },
+        {
+          "name": "Toast mit Kashkaval",
+          "price": "4,00 €",
+          "desc": null
+        }
+      ]
+    },
+    {
+      "id": "menu-beilagen",
+      "name": "Beilagen",
+      "image": "pommes-thumb.jpg",
+      "items": [
+        {
+          "name": "Pommes Frites",
+          "price": "4,00 €",
+          "desc": null
+        },
+        {
+          "name": "6er Onion Rings",
+          "price": "4,00 €",
+          "desc": null
+        },
+        {
+          "name": "8er Onion Rings",
+          "price": "6,00 €",
+          "desc": null
+        },
+        {
+          "name": "5er Chicken Nuggets",
+          "price": "4,00 €",
+          "desc": null
+        },
+        {
+          "name": "8er Chicken Nuggets",
+          "price": "6,00 €",
+          "desc": null
+        },
+        {
+          "name": "5er Chili Cheese Nuggets",
+          "price": "6,00 €",
+          "desc": null
+        }
+      ]
+    },
+    {
+      "id": "menu-dessert",
+      "name": "Dessert",
+      "image": "baklava-thumb.jpg",
+      "items": [
+        {
+          "name": "Stück Baklava",
+          "price": "2,00 €",
+          "desc": null
+        },
+        {
+          "name": "Kugel Eis",
+          "price": "1,00 €",
+          "desc": null
+        }
+      ]
+    },
+    {
+      "id": "menu-getraenke",
+      "name": "Getränke",
+      "image": null,
+      "note": "Pfand inklusive.",
+      "items": [
+        {
+          "name": "Wasser",
+          "price": "2,00 €",
+          "desc": null
+        },
+        {
+          "name": "Ayran",
+          "price": "2,00 €",
+          "desc": null
+        },
+        {
+          "name": "Paulaner (alle Sorten)",
+          "price": "2,50 €",
+          "desc": null
+        },
+        {
+          "name": "Rauch Eistee (alle Sorten)",
+          "price": "2,50 €",
+          "desc": null
+        },
+        {
+          "name": "Uludağ Dose",
+          "price": "2,50 €",
+          "desc": null
+        },
+        {
+          "name": "Black Forest (1 Liter)",
+          "price": "3,00 €",
+          "desc": null
+        },
+        {
+          "name": "Red Bull",
+          "price": "3,00 €",
+          "desc": null
+        },
+        {
+          "name": "Tee",
+          "price": "1,00 €",
+          "desc": null
+        },
+        {
+          "name": "Kaffee",
+          "price": "1,00 €",
+          "desc": null
+        }
+      ]
+    },
+    {
+      "id": "menu-extras",
+      "name": "Extras",
+      "image": null,
+      "items": [
+        {
+          "name": "Extra Fleisch",
+          "price": "1,50 €",
+          "desc": null
+        },
+        {
+          "name": "Extra Käse",
+          "price": "1,00 €",
+          "desc": null
+        }
+      ]
+    }
+  ]
+}

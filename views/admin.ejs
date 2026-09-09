@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Admin – Moe's Kebap</title>
+<style>
+  body{font-family:sans-serif;background:#faf6ec;color:#1a1a16;margin:0;padding:2rem;}
+  .topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;}
+  h1{font-size:1.4rem;}
+  a.logout{color:#8a3a3a;text-decoration:none;font-size:0.9rem;}
+  .slogan-box{background:#fff;padding:1.2rem;border-radius:6px;margin-bottom:2rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;}
+  .slogan-box p{margin:0;font-style:italic;}
+  a.edit-link{color:#1c4a34;font-weight:600;text-decoration:none;font-size:0.85rem;white-space:nowrap;}
+  .delete-btn{background:none;border:none;color:#8a3a3a;font-weight:600;font-size:0.85rem;cursor:pointer;padding:0;font-family:inherit;}
+  table{width:100%;border-collapse:collapse;background:#fff;border-radius:6px;overflow:hidden;}
+  th,td{text-align:left;padding:0.7rem 1rem;border-bottom:1px solid #eee;font-size:0.9rem;}
+  th{background:#eef1e2;}
+  .cat-header td{background:#f1ead8;font-weight:700;}
+</style>
+</head>
+<body>
+  <div class="topbar">
+    <h1>Moe's Kebap – Admin</h1>
+    <a class="logout" href="/admin/logout">Abmelden</a>
+  </div>
+
+  <div class="slogan-box">
+    <p>Hero-Slogan: „<%= hero.slogan %>"</p>
+    <a class="edit-link" href="/admin/slogan/edit">Bearbeiten</a>
+  </div>
+
+  <p style="margin-bottom:1rem;"><a class="edit-link" href="/admin/items/new">+ Neues Gericht anlegen</a></p>
+
+  <table>
+    <tr><th>Kategorie / Gericht</th><th>Preis</th><th colspan="2"></th></tr>
+    <% menu.forEach(function(category) { %>
+      <tr class="cat-header"><td colspan="4"><%= category.name %> — <a class="edit-link" href="/admin/categories/<%= category.id %>/edit">Bild ändern</a></td></tr>
+      <% category.items.forEach(function(item) { %>
+        <tr>
+          <td><%= item.name %></td>
+          <td><%= item.price %></td>
+          <td><a class="edit-link" href="/admin/items/<%= item.id %>/edit">Bearbeiten</a></td>
+          <td>
+            <form method="POST" action="/admin/items/<%= item.id %>/delete" onsubmit="return confirm('„' + <%- JSON.stringify(item.name) %> + '\" wirklich löschen?')" style="display:inline;">
+              <button type="submit" class="delete-btn">Löschen</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    <% }) %>
+  </table>
+</body>
+</html>
