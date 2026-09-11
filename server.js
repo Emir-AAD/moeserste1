@@ -53,12 +53,27 @@ function formatPrice(cents) {
   return (cents / 100).toFixed(2).replace('.', ',') + ' €';
 }
 
+const DAY_NAMES_EN = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
+function toOpeningHoursSpecification(hours) {
+  return hours
+    .map((h, i) => ({ ...h, i }))
+    .filter(h => !h.closed)
+    .map(h => ({
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: DAY_NAMES_EN[h.i],
+      opens: h.opens,
+      closes: h.closes
+    }));
+}
+
 // jetzt "async function" - lädt Daten über await, statt sie sofort zurückzugeben
 async function loadContent() {
   const sloganResult = await pool.query("SELECT value FROM settings WHERE key = 'hero_slogan'");
   const slogan = sloganResult.rows[0].value;
 
   const { rows: categories } = await pool.query('SELECT * FROM categories ORDER BY sort_order');
+  const { rows: hours } = await pool.query('SELECT * FROM hours ORDER BY day_of_week');
 
   const menu = [];
   for (const cat of categories) {
@@ -80,7 +95,7 @@ async function loadContent() {
     });
   }
 
-  return { hero: { slogan }, menu };
+  return { hero: { slogan }, menu, hours, openingHoursSpecification: toOpeningHoursSpecification(hours) };
 }
 
 // --- öffentliche Seite ---
@@ -186,6 +201,26 @@ app.get('/admin/slogan/edit', requireAdmin, async (req, res) => {
 
 app.post('/admin/slogan/edit', requireAdmin, async (req, res) => {
   await pool.query("UPDATE settings SET value = $1 WHERE key = 'hero_slogan'", [req.body.slogan]);
+  res.redirect('/admin');
+});
+
+// --- Admin: Öffnungszeiten bearbeiten ---
+app.get('/admin/hours/edit', requireAdmin, async (req, res) => {
+  const { rows: hours } = await pool.query('SELECT * FROM hours ORDER BY day_of_week');
+  res.render('admin-hours', { hours });
+});
+
+app.post('/admin/hours/edit', requireAdmin, async (req, res) => {
+  // req.body enthält für jeden Tag eigene Felder, z.B. opens_0, closes_0, closed_0, ...
+  for (let i = 0; i < 7; i++) {
+    const closed = req.body[`closed_${i}`] === 'on'; // Checkbox schickt nur "on" wenn angehakt, sonst gar nichts
+    const opens = closed ? null : req.body[`opens_${i}`];
+    const closes = closed ? null : req.body[`closes_${i}`];
+    await pool.query(
+      'UPDATE hours SET opens = $1, closes = $2, closed = $3 WHERE day_of_week = $4',
+      [opens, closes, closed, i]
+    );
+  }
   res.redirect('/admin');
 });
 

@@ -37,14 +37,30 @@ async function main() {
       description TEXT,
       sort_order INTEGER NOT NULL
     );
+
+    CREATE TABLE IF NOT EXISTS hours (
+      day_of_week INTEGER PRIMARY KEY,
+      day_name TEXT NOT NULL,
+      opens TEXT,
+      closes TEXT,
+      closed BOOLEAN NOT NULL DEFAULT false
+    );
   `);
 
   // --- alte Daten leeren, damit das Skript gefahrlos mehrfach läuft ---
-  await pool.query('DELETE FROM menu_items; DELETE FROM categories; DELETE FROM settings;');
+  await pool.query('DELETE FROM menu_items; DELETE FROM categories; DELETE FROM settings; DELETE FROM hours;');
 
   const content = JSON.parse(fs.readFileSync('data/content.json', 'utf-8'));
 
   await pool.query('INSERT INTO settings (key, value) VALUES ($1, $2)', ['hero_slogan', content.hero.slogan]);
+
+  for (let i = 0; i < content.hours.length; i++) {
+    const h = content.hours[i];
+    await pool.query(
+      'INSERT INTO hours (day_of_week, day_name, opens, closes, closed) VALUES ($1, $2, $3, $4, $5)',
+      [i, h.day, h.opens, h.closes, h.closed]
+    );
+  }
 
   for (let catIndex = 0; catIndex < content.menu.length; catIndex++) {
     const category = content.menu[catIndex];

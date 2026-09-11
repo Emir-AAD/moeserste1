@@ -244,5 +244,49 @@
         }
       ]
     }
+  ],
+  "hours": [
+    {
+      "day": "Montag",
+      "opens": "11:00",
+      "closes": "19:00",
+      "closed": false
+    },
+    {
+      "day": "Dienstag",
+      "opens": "11:00",
+      "closes": "19:00",
+      "closed": false
+    },
+    {
+      "day": "Mittwoch",
+      "opens": "11:00",
+      "closes": "19:00",
+      "closed": false
+    },
+    {
+      "day": "Donnerstag",
+      "opens": "11:00",
+      "closes": "19:00",
+      "closed": false
+    },
+    {
+      "day": "Freitag",
+      "opens": "11:00",
+      "closes": "23:00",
+      "closed": false
+    },
+    {
+      "day": "Samstag",
+      "opens": "11:00",
+      "closes": "23:00",
+      "closed": false
+    },
+    {
+      "day": "Sonntag",
+      "opens": null,
+      "closes": null,
+      "closed": true
+    }
   ]
 }

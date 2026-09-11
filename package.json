@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "setup-db": "node setup-db.js",
+    "migrate-add-hours": "node migrate-add-hours.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

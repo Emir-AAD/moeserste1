@@ -40,20 +40,7 @@
     "addressLocality": "München",
     "addressCountry": "DE"
   },
-  "openingHoursSpecification": [
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday"],
-      "opens": "11:00",
-      "closes": "19:00"
-    },
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Friday","Saturday"],
-      "opens": "11:00",
-      "closes": "23:00"
-    }
-  ],
+  "openingHoursSpecification": <%- JSON.stringify(openingHoursSpecification) %>,
   "servesHalal": true,
   "acceptsReservations": false,
   "sameAs": ["https://instagram.com/moeskebap"]
@@ -586,9 +573,9 @@
           <div style="flex:1">
             <h4>Öffnungszeiten</h4>
             <table class="hours">
-              <tr><td>Montag – Donnerstag</td><td>11:00 – 19:00</td></tr>
-              <tr><td>Freitag – Samstag</td><td>11:00 – 23:00</td></tr>
-              <tr><td>Sonntag</td><td>Ruhetag</td></tr>
+              <% hours.forEach(function(h) { %>
+                <tr><td><%= h.day_name %></td><td><%= h.closed ? 'Ruhetag' : h.opens + ' – ' + h.closes %></td></tr>
+              <% }) %>
             </table>
           </div>
         </div>

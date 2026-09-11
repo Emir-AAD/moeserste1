@@ -38,6 +38,20 @@ Lokal in `.env` (liegt NICHT im Git), beim Hoster im jeweiligen Environment-Vari
 6. Fertig - **kein Volume nötig**, die Datenbank läuft komplett getrennt vom App-Server
    und übersteht jedes Redeploy von ganz allein
 
+## Datenbank-Änderungen nachträglich einspielen (Migrationen)
+
+Wenn sich das Datenbank-Schema ändert (wie z.B. die neue `hours`-Tabelle), NICHT
+`npm run setup-db` auf einer bereits laufenden Datenbank ausführen - das löscht
+alle bestehenden Speisekarten-Einträge! Stattdessen ein eigenes, nicht-destruktives
+Migrations-Skript pro Änderung, z.B.:
+
+```bash
+railway ssh
+npm run migrate-add-hours
+```
+
+`setup-db.js` bleibt nur für komplett neue, leere Datenbanken gedacht.
+
 ## Projektstruktur
 
 ```
